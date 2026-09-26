@@ -1,0 +1,34 @@
+AVA (Système d'Agent Autonome)
+│
+├── 📂 config/                  # Configuration globale et persistance des états
+│   ├── config.json             # Paramètres système et clés API
+│   └── ego_state.json          # Invariants de personnalité et "égo" simulé
+│
+├── 📂 data/                    # Le système de stockage et de mémoires
+│   ├── ava_episodes.db         # [Mémoire Épisodique - SQLite] Historique des interactions et contextes[cite: 1]
+│   ├── ava_memory_db/          # [Mémoire Long Terme - ChromaDB] Connaissances vectorisées (profil, goûts)[cite: 2]
+│   └── fred_knowledge.json     # Sauvegarde textuelle des connaissances long terme[cite: 2]
+│
+├── 📂 ava/                     # Le cœur logique et computationnel
+│   ├── 📂 memory/
+│   │   ├── episodic_memory.py  # Gestion des épisodes passés[cite: 1]
+│   │   ├── long_term_memory.py # Recherche sémantique et vectorielle[cite: 2]
+│   │   └── procedural_memory.py# Automatismes et règles conditionnelles (Triggers/Actions)[cite: 3]
+│   │
+│   ├── 📂 reasoning/
+│   │   └── reasoning_engine.py # Le moteur central : croise mémoires, LLM et règles[cite: 4]
+│   │
+│   ├── 📂 core/                # (En cours d'intégration via Claude)
+│   │   ├── emotion_decoder.py  # Analyse de la valence et de la fatigue (Empathie computationnelle)
+│   │   ├── ego_core.py         # Maintien de l'identité stable et de la perspective propre
+│   │   ├── prime_directive.py  # Boussole morale (protection de la vie, bienveillance globale)
+│   │   └── proactive_loop.py   # Boucle d'autonomie et d'initiatives en arrière-plan
+│   │
+│   └── 📂 utils/
+│       ├── config_loader.py    # Chargement et écriture des configurations[cite: 5]
+│       ├── error_handler.py    # Gestion des pannes, erreurs matérielles et modes dégradés[cite: 6]
+│       └── logger.py           # Traçabilité des actions et des conversations[cite: 7]
+│
+└── 📂 logs/                    # Journaux d'exécution
+    ├── ava.log                 # Logs globaux des actions et conversations[cite: 7]
+    └── ava_errors.log          # Suivi des erreurs techniques[cite: 6]
